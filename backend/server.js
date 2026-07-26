@@ -10,6 +10,9 @@ const PORT = process.env.PORT || 5000;
 const corsOptions = {
   origin: process.env.CORS_ORIGIN || 'http://127.0.0.1:5500', // fallback untuk development lokal
 };
+
+app.set('trust proxy', 1);
+
 // Middleware dasar
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '100kb' }));
