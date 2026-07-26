@@ -1,0 +1,117 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImZhcmlkaGFraW0iLCJpYXQiOjE3ODQ4Nzk1MzksImV4cCI6MTc4NTQ4NDMzOX0.gZkSYxsf2z5RL4WElQX-_RsFA3Y-WvmHmCkaqs-G1hA
+
+### Register User
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "full_name": "Farid Hakim",
+  "username": "yuhuu",
+  "email": "yuhuu@example.com",
+  "password": "rahasia123"
+}
+
+### Login User
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "faridhakim",
+  "password": "rahasia123"
+}
+
+### Ambil Semua Kategori
+GET http://localhost:5000/api/categories
+Authorization: Bearer {{token}}
+
+### Tambah Kategori Baru
+POST http://localhost:5000/api/categories
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Makanan",
+  "type": "expense",
+  "icon": "🍔"
+}
+
+### Update Kategori
+PUT http://localhost:5000/api/categories/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Makanan & Minuman",
+  "type": "expense",
+  "icon": "🍔"
+}
+
+### Hapus Kategori
+DELETE http://localhost:5000/api/categories/5
+Authorization: Bearer {{token}}
+
+### Ambil Semua Transaksi
+GET http://localhost:5000/api/transactions
+Authorization: Bearer {{token}}
+
+### Ambil Transaksi dengan Filter Tanggal
+GET http://localhost:5000/api/transactions?start_date=2026-07-01&end_date=2026-07-31
+Authorization: Bearer {{token}}
+
+### Ambil Transaksi dengan Filter Kategori & Keyword
+GET http://localhost:5000/api/transactions?category_id=1&keyword=Makan Siang
+Authorization: Bearer {{token}}
+
+### Tambah Transaksi Baru
+POST http://localhost:5000/api/transactions
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Makan Siang",
+  "amount": 35000,
+  "type": "expense",
+  "transaction_date": "2026-07-23",
+  "category_id": 6
+}
+
+### Update Transaksi
+PUT http://localhost:5000/api/transactions/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Makan Siang di Kantin",
+  "amount": 30000,
+  "type": "expense",
+  "transaction_date": "2026-07-23",
+  "category_id": 1
+}
+
+### Ubah Tipe Transaksi
+PATCH http://localhost:5000/api/transactions/1/toggle-type
+Authorization: Bearer {{token}}
+
+### Hapus Transaksi
+DELETE http://localhost:5000/api/transactions/1
+Authorization: Bearer {{token}}
+
+### Ringkasan Dashboard
+GET http://localhost:5000/api/dashboard/summary
+Authorization: Bearer {{token}}
+
+### Ringkasan Dashboard dengan Rentang Tanggal
+GET http://localhost:5000/api/dashboard/summary?start_date=2026-07-01&end_date=2026-07-31
+Authorization: Bearer {{token}}
+
+### Agregasi per Kategori (semua tipe)
+GET http://localhost:5000/api/dashboard/by-category
+Authorization: Bearer {{token}}
+
+### Agregasi per Kategori (khusus expense)
+GET http://localhost:5000/api/dashboard/by-category?type=expense
+Authorization: Bearer {{token}}
+
+### Tren Bulanan
+GET http://localhost:5000/api/dashboard/monthly-trend
+Authorization: Bearer {{token}}
