@@ -1,14 +1,14 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImZhcmlkaGFraW0iLCJpYXQiOjE3ODQ4Nzk1MzksImV4cCI6MTc4NTQ4NDMzOX0.gZkSYxsf2z5RL4WElQX-_RsFA3Y-WvmHmCkaqs-G1hA
+@token = <PASTE_TOKEN_HASIL_LOGIN_DISINI>
 
 ### Register User
 POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "full_name": "Farid Hakim",
-  "username": "yuhuu",
-  "email": "yuhuu@example.com",
-  "password": "rahasia123"
+  "full_name": "Test User",
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "password123"
 }
 
 ### Login User
@@ -16,8 +16,8 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "faridhakim",
-  "password": "rahasia123"
+  "username": "testuser",
+  "password": "password123"
 }
 
 ### Ambil Semua Kategori
