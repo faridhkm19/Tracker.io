@@ -8,15 +8,16 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   waitForConnections: true,
-  // Serverless: batasi koneksi agar tidak melebihi limit Aiven free tier
+  // Serverless: 1 koneksi cukup, agar tidak melebihi limit Aiven free tier
   connectionLimit: 1,
   queueLimit: 0,
-  connectTimeout: 10000, // 10 detik timeout koneksi
-  // SSL wajib untuk Aiven MySQL
+  connectTimeout: 15000,
+  // rejectUnauthorized: false lebih kompatibel di Vercel + Aiven
   ssl: {
-    rejectUnauthorized: true,
-    minVersion: 'TLSv1.2',
+    rejectUnauthorized: false,
   },
+  // Penting: matikan keepalive agar serverless function bisa terminate
+  enableKeepAlive: false,
 });
 
 module.exports = pool;
