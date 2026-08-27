@@ -23,7 +23,7 @@ const getCategories = async (req, res) => {
       data: categories,
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error(error); // log error untuk debugging
     res.status(500).json({
       status: 'error',
       message: 'Gagal mengambil data transaksi',
@@ -62,7 +62,7 @@ const createCategory = async (req, res) => {
       data: { id: result.insertId, name, type, icon },
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error(error); // log error untuk debugging
     res.status(500).json({
       status: 'error',
       message: 'Gagal mengambil data transaksi',
@@ -107,7 +107,7 @@ const updateCategory = async (req, res) => {
       message: 'Kategori berhasil diperbarui',
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error(error); // log error untuk debugging
     res.status(500).json({
       status: 'error',
       message: 'Gagal mengambil data transaksi',
@@ -154,7 +154,7 @@ const deleteCategory = async (req, res) => {
       message: 'Kategori berhasil dihapus',
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error(error); // log error untuk debugging
     res.status(500).json({
       status: 'error',
       message: 'Gagal mengambil data transaksi',

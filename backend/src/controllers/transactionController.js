@@ -44,7 +44,7 @@ const getTransactions = async (req, res) => {
       data: transactions,
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error('Error in getTransactions:', error);
     res.status(500).json({
       status: 'error',
       message: 'Gagal mengambil data transaksi',
@@ -108,10 +108,10 @@ const createTransaction = async (req, res) => {
       data: { id: result.insertId },
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error('Error in createTransaction:', error);
     res.status(500).json({
       status: 'error',
-      message: 'Gagal mengambil data transaksi',
+      message: 'Gagal menambahkan transaksi',
     });
   }
 };
@@ -171,10 +171,10 @@ const updateTransaction = async (req, res) => {
       message: 'Transaksi berhasil diperbarui',
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error('Error in updateTransaction:', error);
     res.status(500).json({
       status: 'error',
-      message: 'Gagal mengambil data transaksi',
+      message: 'Gagal memperbarui transaksi',
     });
   }
 };
@@ -204,10 +204,10 @@ const deleteTransaction = async (req, res) => {
       message: 'Transaksi berhasil dihapus',
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error('Error in deleteTransaction:', error);
     res.status(500).json({
       status: 'error',
-      message: 'Gagal mengambil data transaksi',
+      message: 'Gagal menghapus transaksi',
     });
   }
 };
@@ -243,10 +243,10 @@ const toggleTransactionType = async (req, res) => {
       data: { type: newType },
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error('Error in toggleTransactionType:', error);
     res.status(500).json({
       status: 'error',
-      message: 'Gagal mengambil data transaksi',
+      message: 'Gagal mengubah tipe transaksi',
     });
   }
 };

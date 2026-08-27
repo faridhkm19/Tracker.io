@@ -42,10 +42,10 @@ const register = async (req, res) => {
       message: 'Registrasi berhasil',
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error('Error in register:', error);
     res.status(500).json({
       status: 'error',
-      message: 'Gagal mengambil data transaksi',
+      message: 'Gagal melakukan registrasi',
     });
   }
 };
@@ -108,10 +108,10 @@ const login = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error('Error in login:', error);
     res.status(500).json({
       status: 'error',
-      message: 'Gagal mengambil data transaksi',
+      message: 'Gagal melakukan login',
     });
   }
 };

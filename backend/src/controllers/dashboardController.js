@@ -48,7 +48,7 @@ const getSummary = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error(error); // log error untuk debugging
     res.status(500).json({
       status: 'error',
       message: 'Gagal mengambil data transaksi',
@@ -89,7 +89,7 @@ const getByCategory = async (req, res) => {
       data: rows,
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error(error); // log error untuk debugging
     res.status(500).json({
       status: 'error',
       message: 'Gagal mengambil data transaksi',
@@ -132,7 +132,7 @@ const getMonthlyTrend = async (req, res) => {
       data: trendData,
     });
   } catch (error) {
-    console.error(error); // tetap tercatat di log server Railway untuk kebutuhan debugging
+    console.error(error); // log error untuk debugging
     res.status(500).json({
       status: 'error',
       message: 'Gagal mengambil data transaksi',
