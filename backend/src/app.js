@@ -56,4 +56,14 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
+// Catch-all 404 handler untuk mencegah request menggantung (timeout)
+app.use((req, res) => {
+  console.log(`[404] Request tidak cocok dengan route manapun: ${req.method} ${req.originalUrl}`);
+  res.status(404).json({
+    status: 'error',
+    message: 'Endpoint tidak ditemukan',
+    path: req.originalUrl
+  });
+});
+
 module.exports = app;
