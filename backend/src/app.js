@@ -13,9 +13,14 @@ const app = express();
 // Wajib untuk platform dengan reverse proxy
 app.set('trust proxy', 1);
 
-// CORS dipersempit ke domain frontend
+// CORS: terima CORS_ORIGIN dari env, fallback ke semua origin untuk debugging
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN,
+  origin: process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
+    : '*',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: process.env.CORS_ORIGIN ? true : false,
 };
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '100kb' }));
